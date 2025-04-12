@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infections Discussion (4)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Infections Discussion (4)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>You review a 14-year-old boy who has recently emigrated from Russia. He was involved in a car accident two years ago and underwent an emergency splenectomy. Following this he takes penicillin V on a daily basis. He is unsure of his vaccination history. Which organism is he particularly susceptible to?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Staphylococcus aureus"> Staphylococcus aureus</label>
+                <label><input type="radio" name="q1" value="HIV"> HIV</label>
+                <label><input type="radio" name="q1" value="Haemophilus influenzae"> Haemophilus influenzae</label>
+                <label><input type="radio" name="q1" value="Streptococcus pneumoniae"> Streptococcus pneumoniae</label>
+                <label><input type="radio" name="q1" value="Mycobacterium tuberculosis"> Mycobacterium tuberculosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>A 12-year-old boy who had a splenectomy following a road traffic accident is being reviewed in clinic. He had his full immunisation course as a child and was given a repeat pneumococcal vaccination 5 days following surgery. What is the most appropriate ongoing management?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Booster dose of Hib and MenC vaccine + lifelong penicillin V"> Booster dose of Hib and MenC vaccine + lifelong penicillin V</label>
+                <label><input type="radio" name="q2" value="Booster dose of Hib and MenC vaccine + penicillin V for 2 years"> Booster dose of Hib and MenC vaccine + penicillin V for 2 years</label>
+                <label><input type="radio" name="q2" value="Lifelong penicillin V"> Lifelong penicillin V</label>
+                <label><input type="radio" name="q2" value="Booster dose of Hib and MenC vaccine + annual influenza vaccination + penicillin V for 2 years"> Booster dose of Hib and MenC vaccine + annual influenza vaccination + penicillin V for 2 years</label>
+                <label><input type="radio" name="q2" value="Booster dose of Hib and MenC vaccine + annual influenza vaccination + lifelong penicillin V"> Booster dose of Hib and MenC vaccine + annual influenza vaccination + lifelong penicillin V</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>Which one of the following vaccines uses an extract of the organism or virus?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Rabies"> Rabies</label>
+                <label><input type="radio" name="q3" value="Yellow fever"> Yellow fever</label>
+                <label><input type="radio" name="q3" value="Oral polio"> Oral polio</label>
+                <label><input type="radio" name="q3" value="Measles"> Measles</label>
+                <label><input type="radio" name="q3" value="Meningococcus"> Meningococcus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>Which one of the following vaccines uses an inactivated preparation of the organism or virus?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Tetanus"> Tetanus</label>
+                <label><input type="radio" name="q4" value="Meningococcus"> Meningococcus</label>
+                <label><input type="radio" name="q4" value="Oral polio"> Oral polio</label>
+                <label><input type="radio" name="q4" value="Rabies"> Rabies</label>
+                <label><input type="radio" name="q4" value="Diphtheria"> Diphtheria</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>Which one of the following is a live attenuated vaccine?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Yellow fever"> Yellow fever</label>
+                <label><input type="radio" name="q5" value="Rabies"> Rabies</label>
+                <label><input type="radio" name="q5" value="Pertussis"> Pertussis</label>
+                <label><input type="radio" name="q5" value="Diphtheria"> Diphtheria</label>
+                <label><input type="radio" name="q5" value="Tetanus"> Tetanus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>You are counselling a 26-year-old man who has recently had a positive HIV test. His most recent CD4 count is 650 cells/mm3. Which one of the following vaccinations is contraindicated?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Oral poliomyelitis"> Oral poliomyelitis</label>
+                <label><input type="radio" name="q6" value="Yellow fever"> Yellow fever</label>
+                <label><input type="radio" name="q6" value="Pneumococcus"> Pneumococcus</label>
+                <label><input type="radio" name="q6" value="Parenteral poliomyelitis"> Parenteral poliomyelitis</label>
+                <label><input type="radio" name="q6" value="Measles, Mumps, Rubella"> Measles, Mumps, Rubella</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>A 47-year-old man with a known history of schizophrenia is admitted to the Emergency Department due to confusion. A bottle of procyclidine tablets are found in his pocket. On examination the temperature is 38.1°C with a blood pressure of 155/100 mmHg. Neurological examination reveals a GCS of 13/15 but assessment of his peripheral nervous system is difficult due to generalised increased muscle tone. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="Neuroleptic malignant syndrome"> Neuroleptic malignant syndrome</label>
+                <label><input type="radio" name="q7" value="Procyclidine overdose"> Procyclidine overdose</label>
+                <label><input type="radio" name="q7" value="Catatonic schizophrenia"> Catatonic schizophrenia</label>
+                <label><input type="radio" name="q7" value="Clozapine induced agranulocytosis"> Clozapine induced agranulocytosis</label>
+                <label><input type="radio" name="q7" value="Quetiapine induced rhabdomyolysis"> Quetiapine induced rhabdomyolysis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>A 23-year-old man with a history of schizophrenia is taken to the local Emergency Department as he is generally unwell. He is currently taking olanzapine and citalopram. On examination he is noted to have a temperature of 37.0°C and his blood pressure is 170/100 mmHg. Which other examination finding would best support a diagnosis of neuroleptic malignant syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="Ataxia"> Ataxia</label>
+                <label><input type="radio" name="q8" value="Hyperreflexia"> Hyperreflexia</label>
+                <label><input type="radio" name="q8" value="Muscle rigidity"> Muscle rigidity</label>
+                <label><input type="radio" name="q8" value="Tremor"> Tremor</label>
+                <label><input type="radio" name="q8" value="Papilloedema"> Papilloedema</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>A 72 year old lady was admitted with a cough productive of green phlegm, shortness of breath and a low grade fever. Past medical history included Parkinsons disease for which she was on co-careldopa and hypertension. Chest x-ray showed a right basal consolidation and she was treated for pneumonia with oral antibiotics. As a result of the pneumonia she had a poor appetite and the patient had been refusing to take her medication. She was given intravenous fluids and encouraged to take her oral antibiotics. Over the next 1-2 days the nurses noted that she had started to have fever spikes of greater than 38C, had developed a tremor and was becoming increasingly rigid, agitated and confused. Her blood pressure had also been extremely variable. What test would help you confirm the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Repeat CXR"> Repeat CXR</label>
+                <label><input type="radio" name="q9" value="CK"> CK</label>
+                <label><input type="radio" name="q9" value="Blood cultures"> Blood cultures</label>
+                <label><input type="radio" name="q9" value="CT head"> CT head</label>
+                <label><input type="radio" name="q9" value="Urine sample"> Urine sample</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>A 51-year-old man presents to accident and emergency with a lesion on his forearm. He mentions that he has spent the past three months travelling around South America and only returned home 3 days ago. While his lesion has been present for a few weeks he was reluctant to see a doctor in South America. On examination, there is a 3 × 3 cm erythematous ulcer on the left forearm with a raised edge. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Leishmaniasis"> Leishmaniasis</label>
+                <label><input type="radio" name="q10" value="African trypanosomiasis"> African trypanosomiasis</label>
+                <label><input type="radio" name="q10" value="Herpes zoster"> Herpes zoster</label>
+                <label><input type="radio" name="q10" value="Schistosomiasis"> Schistosomiasis</label>
+                <label><input type="radio" name="q10" value="Cryptosporidiosis"> Cryptosporidiosis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p>11-A 25-year-old man returns from a gap-year in Central and South America and presents with a 2 month history of an ulcerating lesion on his lower lip. Examination of his nasal and oral mucosae reveals widespread involvement. What is the likely cause?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="Leishmania braziliensis"> Leishmania braziliensis</label>
+                <label><input type="radio" name="q11" value="Leishmania mexicana"> Leishmania mexicana</label>
+                <label><input type="radio" name="q11" value="Trypanosoma cruzi"> Trypanosoma cruzi</label>
+                <label><input type="radio" name="q11" value="Basal cell carcinoma"> Basal cell carcinoma</label>
+                <label><input type="radio" name="q11" value="Leishmania donovani"> Leishmania donovani</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-12">
+            <p>12- 28 years old turkish woman arrived in united kingdom with 3 months history of weight loss and intermittent fevers. On examination, patient was emaciated, febrile and pale, enlarged liver, enlarged spleen. CBC shows pancytopenia. Chest X ray normal. Thin and thick films, no parasites identified. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="HIV infection"> HIV infection</label>
+                <label><input type="radio" name="q12" value="Infectious mononucleosis"> Infectious mononucleosis</label>
+                <label><input type="radio" name="q12" value="Malaria"> Malaria</label>
+                <label><input type="radio" name="q12" value="Miliary tuberculosis"> Miliary tuberculosis</label>
+                <label><input type="radio" name="q12" value="Visceral leishmaniasis"> Visceral leishmaniasis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p>13-Which one of the following features is least likely to occur in a patient with visceral leishmaniasis?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="Massive splenomegaly"> Massive splenomegaly</label>
+                <label><input type="radio" name="q13" value="Diarrhoea"> Diarrhoea</label>
+                <label><input type="radio" name="q13" value="Pyrexia"> Pyrexia</label>
+                <label><input type="radio" name="q13" value="Pancytopenia"> Pancytopenia</label>
+                <label><input type="radio" name="q13" value="Grey skin"> Grey skin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p>14- Which of the following statements is most accurate regarding leishmaniasis?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="It is transmitted by the anopheles mosquito"> It is transmitted by the anopheles mosquito</label>
+                <label><input type="radio" name="q14" value="Leishmania are bacteria"> Leishmania are bacteria</label>
+                <label><input type="radio" name="q14" value="Leishmaniasis is usually a self-limiting condition"> Leishmaniasis is usually a self-limiting condition</label>
+                <label><input type="radio" name="q14" value="It is transmitted by the tsetse fly"> It is transmitted by the tsetse fly</label>
+                <label><input type="radio" name="q14" value="The presence of Leishman–Donovan bodies confirms the disease"> The presence of Leishman–Donovan bodies confirms the disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p>15- Apoptosis is programmed cell death, mediated by ??</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="activation of proteolytic enzymes called caspases"> activation of proteolytic enzymes called caspases</label>
+                <label><input type="radio" name="q15" value="DNA synthesis"> DNA synthesis</label>
+                <label><input type="radio" name="q15" value="Antibodies"> Antibodies</label>
+                <label><input type="radio" name="q15" value="Necrosis"> Necrosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-16">
+            <p>16- Which of the following components of complement system mediates as opsonin?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="C5a"> C5a</label>
+                <label><input type="radio" name="q16" value="C6"> C6</label>
+                <label><input type="radio" name="q16" value="C8"> C8</label>
+                <label><input type="radio" name="q16" value="C9"> C9</label>
+                <label><input type="radio" name="q16" value="C3b"> C3b</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p>17- regarding immunological response, hapten - protein complex can be associated with which of the following?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Antibodies that are less efficient in preventing specific disease"> Antibodies that are less efficient in preventing specific disease</label>
+                <label><input type="radio" name="q17" value="Increased antibody affinity for hapten"> Increased antibody affinity for hapten</label>
+                <label><input type="radio" name="q17" value="Lower titres of antibody"> Lower titres of antibody</label>
+                <label><input type="radio" name="q17" value="Maintenance of the same subclass or idiotype of antibody produced"> Maintenance of the same subclass or idiotype of antibody produced</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-18">
+            <p>18- 12 month old child presents to casualty with his father. He has been eating poorly and running a fever for the last 36 hours, after which he developed a widespread maculopapular rash on the trunk. There are no localising findings on physical examination. The father tells you that his son has had all his vaccinations, including measles, mumps and rubella (MMR). What is the potential cause of this infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="Coxsackie virus"> Coxsackie virus</label>
+                <label><input type="radio" name="q18" value="Enterovirus 71"> Enterovirus 71</label>
+                <label><input type="radio" name="q18" value="Human herpesvirus 6"> Human herpesvirus 6</label>
+                <label><input type="radio" name="q18" value="Parvovirus B19"> Parvovirus B19</label>
+                <label><input type="radio" name="q18" value="Rubella"> Rubella</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-19">
+            <p>19- Human Herpesvirus 6 is associated with what disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="Infectious mononucleosis"> Infectious mononucleosis</label>
+                <label><input type="radio" name="q19" value="CMV infection"> CMV infection</label>
+                <label><input type="radio" name="q19" value="Herpes Simplex infection"> Herpes Simplex infection</label>
+                <label><input type="radio" name="q19" value="Roseola"> Roseola</label>
+                <label><input type="radio" name="q19" value="Chicken Pox"> Chicken Pox</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-20">
+            <p>20- A 31-year-old man from Russia who is known to be HIV positive presents with purple plaques on his skin. Which of the following viruses is thought to be the cause of Kaposi's sarcoma?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="HTLV-1"> HTLV-1</label>
+                <label><input type="radio" name="q20" value="HIV-2"> HIV-2</label>
+                <label><input type="radio" name="q20" value="HHV-8"> HHV-8</label>
+                <label><input type="radio" name="q20" value="CMV"> CMV</label>
+                <label><input type="radio" name="q20" value="HPV-8"> HPV-8</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-21">
+            <p>21- A 42-year-old man presents to his GP with ‘blotches’ over his legs. He has been HIV positive for ten years. On examination, there are multiple purple and brown papules over his legs and his gums. A diagnosis of Kaposi’s sarcoma is suspected. What is the most likely causative organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="Herpes simplex virus type 1"> Herpes simplex virus type 1</label>
+                <label><input type="radio" name="q21" value="Herpes simplex virus type 2"> Herpes simplex virus type 2</label>
+                <label><input type="radio" name="q21" value="Human herpes virus type 3"> Human herpes virus type 3</label>
+                <label><input type="radio" name="q21" value="Human herpes virus type 8"> Human herpes virus type 8</label>
+                <label><input type="radio" name="q21" value="Pneumocystis jiroveci"> Pneumocystis jiroveci</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- A 42-year-old man presents to his GP complaining of deterioration in his vision in the right eye and the presence of floaters. The change in his vision has been causing him to suffer from headaches. He has been HIV positive for ten years. Fundoscopy reveals haemorrhages and exudates on the retina. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="Retinal detachment"> Retinal detachment</label>
+                <label><input type="radio" name="q22" value="CMV retinitis"> CMV retinitis</label>
+                <label><input type="radio" name="q22" value="Kaposi’s sarcoma"> Kaposi’s sarcoma</label>
+                <label><input type="radio" name="q22" value="Optic atrophy"> Optic atrophy</label>
+                <label><input type="radio" name="q22" value="Diabetic retinopathy"> Diabetic retinopathy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23- A 32-year-old male patient complains of fever and shortness of breath. There is no pleuritic chest pain or rigors and no sputum production. A chest x-ray shows diffuse perihilar infiltrates. The patient’s condition worsens while on levofloxacin. A methenamine silver stain of bronchial washings shows cyst-like structures. Which of the following is correct?</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="Definitive diagnosis can be made by serology."> Definitive diagnosis can be made by serology.</label>
+                <label><input type="radio" name="q23" value="The organism will grow after 48 hours."> The organism will grow after 48 hours.</label>
+                <label><input type="radio" name="q23" value="History will likely provide important clues to the diagnosis."> History will likely provide important clues to the diagnosis.</label>
+                <label><input type="radio" name="q23" value="Cavitary disease is likely to develop."> Cavitary disease is likely to develop.</label>
+                <label><input type="radio" name="q23" value="The infection is unlikely to recur"> The infection is unlikely to recur</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24- A 39-year-old man with HIV is admitted due to shortness of breath. Chest x-ray shows bilateral pulmonary infiltrates and Pneumocystis cannii pneumonia is suspected. What type of staining should be applied to the bronchoalveolar lavage to demonstrate the organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Rubeanic acid"> Rubeanic acid</label>
+                <label><input type="radio" name="q24" value="Silver stain"> Silver stain</label>
+                <label><input type="radio" name="q24" value="Pearl's stain"> Pearl's stain</label>
+                <label><input type="radio" name="q24" value="Rose Bengal"> Rose Bengal</label>
+                <label><input type="radio" name="q24" value="Congo red"> Congo red</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25- Septra is used in AIDS patients to prevent which opportunistic organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="Pneumocystis carinii"> Pneumocystis carinii</label>
+                <label><input type="radio" name="q25" value="M. tuberculosis"> M. tuberculosis</label>
+                <label><input type="radio" name="q25" value="S. pneumoniae"> S. pneumoniae</label>
+                <label><input type="radio" name="q25" value="CMV"> CMV</label>
+                <label><input type="radio" name="q25" value="Cryptococcus"> Cryptococcus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- A 34-year-old HIV positive man is being treated for Pneumocystis carinii pneumonia with co-trimoxazole. Arterial blood gases show a p02 8.2 kPa. What drug should be added to treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="Meropenem"> Meropenem</label>
+                <label><input type="radio" name="q26" value="Chloramphenicol"> Chloramphenicol</label>
+                <label><input type="radio" name="q26" value="Steroids"> Steroids</label>
+                <label><input type="radio" name="q26" value="Nebulised fluconazole"> Nebulised fluconazole</label>
+                <label><input type="radio" name="q26" value="Magnesium sulphate"> Magnesium sulphate</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27- A 34 year-old man with a past history of HIV infection presents to the Emergency Department with watery diarrhoea. Cryptosporidium infection is confirmed on ZN staining. What is the most suitable management?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="Metronidazole"> Metronidazole</label>
+                <label><input type="radio" name="q27" value="Sulfadiazine + pyrimethamine"> Sulfadiazine + pyrimethamine</label>
+                <label><input type="radio" name="q27" value="Supportive therapy"> Supportive therapy</label>
+                <label><input type="radio" name="q27" value="Rifampicin + ethambutol + clarithromycin"> Rifampicin + ethambutol + clarithromycin</label>
+                <label><input type="radio" name="q27" value="Co-trimoxazole"> Co-trimoxazole</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28- A 33-year-old man is admitted due to profuse diarrhoea. He has a history of HIV infection and Cryptosporidium diarrhoea is suspected. What investigation is most likely to confirm the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="Blood cultures"> Blood cultures</label>
+                <label><input type="radio" name="q28" value="Sigmoidoscopy with biopsy"> Sigmoidoscopy with biopsy</label>
+                <label><input type="radio" name="q28" value="Abdominal x-ray"> Abdominal x-ray</label>
+                <label><input type="radio" name="q28" value="Acid-fast staining of stool sample"> Acid-fast staining of stool sample</label>
+                <label><input type="radio" name="q28" value="Cryptosporidium PCR of stool sample"> Cryptosporidium PCR of stool sample</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- Which causes bloody diarrhea in HIV patients?</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="Cytomegalovirus colitis"> Cytomegalovirus colitis</label>
+                <label><input type="radio" name="q29" value="Cryptosporidium"> Cryptosporidium</label>
+                <label><input type="radio" name="q29" value="Cystosprodium"> Cystosprodium</label>
+                <label><input type="radio" name="q29" value="microspora"> microspora</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30- A 33-year-old man who is HIV positive is admitted to the Emergency Department with confusion and drowsiness. He has been complaining of headaches for a number of days. On examination heart rate is 90/min, blood pressure 104/78 mmHg and temperature is 37.2°C. He is confused giving a Glasgow Coma Scale (GCS) score of 14. There is no photophobia or neck stiffness. His infectious diseases consultant reports that he is prescribed highly active antiretroviral treatment (HAART) but his compliance is poor and he often misses clinic appointments. A CT brain is requested: CT brain (with contrast): Multiple hypodense regions predominantly in the basal ganglia which show ring enhancement. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="Progressive multifocal leukoencephalopathy"> Progressive multifocal leukoencephalopathy</label>
+                <label><input type="radio" name="q30" value="Cryptococcal infection"> Cryptococcal infection</label>
+                <label><input type="radio" name="q30" value="Cerebral toxoplasmosis"> Cerebral toxoplasmosis</label>
+                <label><input type="radio" name="q30" value="CMV encephalitis"> CMV encephalitis</label>
+                <label><input type="radio" name="q30" value="Tuberculosis"> Tuberculosis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-31">
+            <p>31- A 29-year-old HIV positive man is admitted with right-sided hemiplegia. For the past four days he has been complaining of headache and flu-like symptoms. CT scan shows multiple ring enhancing lesions. A diagnosis of cerebral toxoplasmosis is suspected. What is the most suitable management?</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="Artemether and lumefantrine"> Artemether and lumefantrine</label>
+                <label><input type="radio" name="q31" value="Co-trimoxazole"> Co-trimoxazole</label>
+                <label><input type="radio" name="q31" value="Supportive treatment"> Supportive treatment</label>
+                <label><input type="radio" name="q31" value="Pyrimethamine and sulphadiazine"> Pyrimethamine and sulphadiazine</label>
+                <label><input type="radio" name="q31" value="Metronidazole and gentamicin"> Metronidazole and gentamicin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-32">
+            <p>32- A 44-year-old man who is known to have HIV is admitted to the Emergency Department following a seizure. He has been taking antiretroviral therapy for the past two years. A CT scan (without contrast) shows a solitary lesion in the basal ganglia. What is the most effective method to help differentiate between lymphoma and toxoplasmosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q32" value="MR spectroscopy"> MR spectroscopy</label>
+                <label><input type="radio" name="q32" value="CT with contrast"> CT with contrast</label>
+                <label><input type="radio" name="q32" value="Thallium SPECT"> Thallium SPECT</label>
+                <label><input type="radio" name="q32" value="Peripheral blood film"> Peripheral blood film</label>
+                <label><input type="radio" name="q32" value="Lumbar puncture"> Lumbar puncture</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33- A patient with HIV is reviewed. Which one of the following is an example of a nucleoside analogue reverse transcriptase inhibitor?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="Zidovudine"> Zidovudine</label>
+                <label><input type="radio" name="q33" value="Indinavir"> Indinavir</label>
+                <label><input type="radio" name="q33" value="Ritonavir"> Ritonavir</label>
+                <label><input type="radio" name="q33" value="Ribavirin"> Ribavirin</label>
+                <label><input type="radio" name="q33" value="Efavirenz"> Efavirenz</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34- Which of the following antiretroviral drugs is most characteristically associated with pancreatitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="Zidovudine"> Zidovudine</label>
+                <label><input type="radio" name="q34" value="Didanosine"> Didanosine</label>
+                <label><input type="radio" name="q34" value="Indinavir"> Indinavir</label>
+                <label><input type="radio" name="q34" value="Ritonavir"> Ritonavir</label>
+                <label><input type="radio" name="q34" value="Nevirapine"> Nevirapine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-35">
+            <p>35- Which of the following anti-retroviral drugs is most characteristically associated with nephrolithiasis?</p>
+            <div class="options">
+                <label><input type="radio" name="q35" value="Zidovudine"> Zidovudine</label>
+                <label><input type="radio" name="q35" value="Didanosine"> Didanosine</label>
+                <label><input type="radio" name="q35" value="Indinavir"> Indinavir</label>
+                <label><input type="radio" name="q35" value="Ritonavir"> Ritonavir</label>
+                <label><input type="radio" name="q35" value="Nevirapine"> Nevirapine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-36">
+            <p>36- What is the mechanism of action of the antiretroviral drugs raltegravir, dolutegravir and elvitegravir?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="Chemokine receptor CCR5 antagonist"> Chemokine receptor CCR5 antagonist</label>
+                <label><input type="radio" name="q36" value="Fusion inhibitor"> Fusion inhibitor</label>
+                <label><input type="radio" name="q36" value="Integrase inhibitor"> Integrase inhibitor</label>
+                <label><input type="radio" name="q36" value="Protease inhibitor"> Protease inhibitor</label>
+                <label><input type="radio" name="q36" value="Reverse transcriptase inhibitor"> Reverse transcriptase inhibitor</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-37">
+            <p>37- A 33-year-old woman who was diagnosed as having HIV-1 two years ago is reviewed in clinic. She is fit and well currently and has no symptoms of note. The only medication she takes is the occasional paracetamol for tension headaches. Her latest blood tests are as follows: CD4 325. What is the most appropriate action?</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="Wait until the CD4 count is below 200"> Wait until the CD4 count is below 200</label>
+                <label><input type="radio" name="q37" value="Wait until the CD4 count is above 350"> Wait until the CD4 count is above 350</label>
+                <label><input type="radio" name="q37" value="Wait until the CD4 count is below 250"> Wait until the CD4 count is below 250</label>
+                <label><input type="radio" name="q37" value="Start antiretroviral therapy now"> Start antiretroviral therapy now</label>
+                <label><input type="radio" name="q37" value="Wait until the CD4 count is below 300"> Wait until the CD4 count is below 300</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-38">
+            <p>38- A 31-year-old woman who is known to be HIV positive presents following a positive pregnancy test. Her last menstrual period was 6 weeks ago. The last CD4 count was 420 *10 6/l and she does not take any antiretroviral therapy. What is the most appropriate management with regards to antiretroviral therapy?</p>
+            <div class="options">
+                <label><input type="radio" name="q38" value="Check CD4 at 12 weeks and initiate antiretroviral therapy if CD4 count is less than 350 * 10 3/l"> Check CD4 at 12 weeks and initiate antiretroviral therapy if CD4 count is less than 350 * 10 3/l</label>
+                <label><input type="radio" name="q38" value="Do not give antiretroviral therapy"> Do not give antiretroviral therapy</label>
+                <label><input type="radio" name="q38" value="Start antiretroviral therapy at 20-32 weeks"> Start antiretroviral therapy at 20-32 weeks</label>
+                <label><input type="radio" name="q38" value="Start antiretroviral therapy at 10-12 weeks"> Start antiretroviral therapy at 10-12 weeks</label>
+                <label><input type="radio" name="q38" value="Start antiretroviral therapy immediately"> Start antiretroviral therapy immediately</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-39">
+            <p>39- A 22-year-old woman who is an immigrant from Malawi presents for review as she thinks she is pregnant. This is confirmed with a positive pregnancy test. She is known to be HIV positive. Which one of the following should not be part of the management plan to ensure an optimal outcome?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="Oral zidovudine for the newborn until 6 weeks of age"> Oral zidovudine for the newborn until 6 weeks of age</label>
+                <label><input type="radio" name="q39" value="Maternal antiretroviral therapy"> Maternal antiretroviral therapy</label>
+                <label><input type="radio" name="q39" value="Encourage breast feeding"> Encourage breast feeding</label>
+                <label><input type="radio" name="q39" value="Intrapartum zidovudine infusion"> Intrapartum zidovudine infusion</label>
+                <label><input type="radio" name="q39" value="Elective caesarean section"> Elective caesarean section</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-40">
+            <p>40- A health care assistant sustains a needlestick injury whilst taking blood from a patient who is known to be HIV positive. Following thorough washing of the wound what is the most appropriate management?</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="HIV test of health care worker in 3 months to determine treatment"> HIV test of health care worker in 3 months to determine treatment</label>
+                <label><input type="radio" name="q40" value="Immediate p24 HIV test of health care worker to determine treatment"> Immediate p24 HIV test of health care worker to determine treatment</label>
+                <label><input type="radio" name="q40" value="Oral antiretroviral therapy for 4 weeks"> Oral antiretroviral therapy for 4 weeks</label>
+                <label><input type="radio" name="q40" value="Oral antiretroviral therapy for 3 months"> Oral antiretroviral therapy for 3 months</label>
+                <label><input type="radio" name="q40" value="Intravenous zidovudine"> Intravenous zidovudine</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-41">
+            <p>41- A phlebotomist gives herself a needlestick injury whilst taking blood from a patient who is known to have the HIV infection. What is the chance that the phlebotomist will develop HIV?</p>
+            <div class="options">
+                <label><input type="radio" name="q41" value="0.03%"> 0.03%</label>
+                <label><input type="radio" name="q41" value="0.3%"> 0.3%</label>
+                <label><input type="radio" name="q41" value="1%"> 1%</label>
+                <label><input type="radio" name="q41" value="3%"> 3%</label>
+                <label><input type="radio" name="q41" value="5-10%"> 5-10%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-42">
+            <p>42- A 27-year-old male presents with malaise, pyrexia, lymphadenopathy and a maculopapular rash. The Monospot test is negative. Given a history of high-risk sexual behaviour you are asked to exclude a HIV seroconversion illness. What is the most appropriate investigation?</p>
+            <div class="options">
+                <label><input type="radio" name="q42" value="Antibodies to HIV-2"> Antibodies to HIV-2</label>
+                <label><input type="radio" name="q42" value="gp120 polymerase chain reaction"> gp120 polymerase chain reaction</label>
+                <label><input type="radio" name="q42" value="p24 antigen test"> p24 antigen test</label>
+                <label><input type="radio" name="q42" value="CCR5 polymerase chain reaction"> CCR5 polymerase chain reaction</label>
+                <label><input type="radio" name="q42" value="Antibodies to HIV-1"> Antibodies to HIV-1</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-43">
+            <p>43- Which one of the following congenital infections is most characteristically associated with chorioretinitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q43" value="Cytomegalovirus"> Cytomegalovirus</label>
+                <label><input type="radio" name="q43" value="Treponema pallidum"> Treponema pallidum</label>
+                <label><input type="radio" name="q43" value="Rubella"> Rubella</label>
+                <label><input type="radio" name="q43" value="Toxoplasma gondii"> Toxoplasma gondii</label>
+                <label><input type="radio" name="q43" value="Parvovirus B19"> Parvovirus B19</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-44">
+            <p>44- Which one of the following congenital infections is most characteristically associated with sensorineural deafness?</p>
+            <div class="options">
+                <label><input type="radio" name="q44" value="Toxoplasma gondii"> Toxoplasma gondii</label>
+                <label><input type="radio" name="q44" value="Parvovirus B 19"> Parvovirus B 19</label>
+                <label><input type="radio" name="q44" value="Rubella"> Rubella</label>
+                <label><input type="radio" name="q44" value="Treponema pallidum"> Treponema pallidum</label>
+                <label><input type="radio" name="q44" value="Cytomegalovirus"> Cytomegalovirus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-45">
+            <p>45- 27-year-old woman, who has recently returned from holiday in Africa, presents to accident and emergency with a 7-day history of fevers, sweats, headache, malaise and lethargy. On examination, her temperature is 39°C. Cardio respiratory and gastrointestinal examinations are unremarkable. What is the most likely differential diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q45" value="Malaria"> Malaria</label>
+                <label><input type="radio" name="q45" value="Tuberculosis"> Tuberculosis</label>
+                <label><input type="radio" name="q45" value="Influenza"> Influenza</label>
+                <label><input type="radio" name="q45" value="Typhoid"> Typhoid</label>
+                <label><input type="radio" name="q45" value="Dengue fever"> Dengue fever</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-46">
+            <p>46- 25-year-old woman, who has recently returned from holiday in Africa, presents to accident and emergency with a 7-day history of fevers, sweats, headache, malaise and lethargy. On examination, her temperature is 39°C. A diagnosis of malaria is suspected. What is the investigation of choice to confirm the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q46" value="Blood cultures"> Blood cultures</label>
+                <label><input type="radio" name="q46" value="Full blood count"> Full blood count</label>
+                <label><input type="radio" name="q46" value="Thick and thin blood films"> Thick and thin blood films</label>
+                <label><input type="radio" name="q46" value="Ziehl–Nielson stain"> Ziehl–Nielson stain</label>
+                <label><input type="radio" name="q46" value="Paul–Bunnell test"> Paul–Bunnell test</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-47">
+            <p>47- 25 years old female returned from Nigeria presents to ER with 2 days history of fever and rigors. She develops a seizure. What is the next most appropriate investigation for diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q47" value="Blood culture"> Blood culture</label>
+                <label><input type="radio" name="q47" value="Blood film for malaria parasites"> Blood film for malaria parasites</label>
+                <label><input type="radio" name="q47" value="CT scan of the head"> CT scan of the head</label>
+                <label><input type="radio" name="q47" value="Lumbar puncture"> Lumbar puncture</label>
+                <label><input type="radio" name="q47" value="MRI scan of head"> MRI scan of head</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-48">
+            <p>48- A 35-year-old man complains of recurrent bouts of high fever with shaking chills for 1 week. He was on a work trip in Sudan 1 month ago. Each attack begins with shaking chills lasting a few hours, followed by fever up to 4 l .0°C, which resolves with profuse sweating. These attacks have occurred every other day. The patient feels slightly tired between episodes of fever but otherwise is well. Examination reveals mild splenomegaly. The liver is not palpable. A blood smear at this time is negative for parasites. Which of the following is the most appropriate next step in diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q48" value="Blood cultures"> Blood cultures</label>
+                <label><input type="radio" name="q48" value="Repeat blood smear during an attack"> Repeat blood smear during an attack</label>
+                <label><input type="radio" name="q48" value="Repeat blood smear every 8 hours for 3 days"> Repeat blood smear every 8 hours for 3 days</label>
+                <label><input type="radio" name="q48" value="Start treatment with chloroquine"> Start treatment with chloroquine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-49">
+            <p>49- A 30-year-old man is diagnosed as having malaria following a recent trip to Zimbabwe. Which one of the following is most likely to indicate severe malaria?</p>
+            <div class="options">
+                <label><input type="radio" name="q49" value="Parasitaemia 1 %"> Parasitaemia 1 %</label>
+                <label><input type="radio" name="q49" value="Heart rate 102 per minute"> Heart rate 102 per minute</label>
+                <label><input type="radio" name="q49" value="White blood cells 18.2"> White blood cells 18.2</label>
+                <label><input type="radio" name="q49" value="Platelets 105"> Platelets 105</label>
+                <label><input type="radio" name="q49" value="Respiratory rate 30 per minute"> Respiratory rate 30 per minute</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-50">
+            <p>50- A 30-year-old man, who has recently returned from holiday in Africa, presents to accident and emergency with a 7-day history of fever, sweats, malaise and lethargy. Thick and thin blood films detect Plasmodium falciparum. What is the most appropriate treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q50" value="Conservative management"> Conservative management</label>
+                <label><input type="radio" name="q50" value="Acyclovir"> Acyclovir</label>
+                <label><input type="radio" name="q50" value="Omeprazole"> Omeprazole</label>
+                <label><input type="radio" name="q50" value="Chloroquine"> Chloroquine</label>
+                <label><input type="radio" name="q50" value="Quinine"> Quinine</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-51">
+            <p>51- pregnant 34 years old female presents with uncomplicated falciparum malaria following a trip to kenya. Which one of the following is the most suitable treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q51" value="Chloroquine"> Chloroquine</label>
+                <label><input type="radio" name="q51" value="Mefloquine"> Mefloquine</label>
+                <label><input type="radio" name="q51" value="Quinine"> Quinine</label>
+                <label><input type="radio" name="q51" value="Doxycycline"> Doxycycline</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-52">
+            <p>52- A 35 year old wildlife photographer plans a trip to Kenya and asks for advice about antimalarial treatment. She has a long history of depression but is currently not on any treatment. The medical history is otherwise unremarkable. Which is the best choice of malaria prophylaxis in this case?</p>
+            <div class="options">
+                <label><input type="radio" name="q52" value="Atovaquone plus proguanil"> Atovaquone plus proguanil</label>
+                <label><input type="radio" name="q52" value="Chloroquine"> Chloroquine</label>
+                <label><input type="radio" name="q52" value="Doxycycline"> Doxycycline</label>
+                <label><input type="radio" name="q52" value="ivermectin"> ivermectin</label>
+                <label><input type="radio" name="q52" value="Mefloquine"> Mefloquine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-53">
+            <p>53- The most appropriate drug for malaria prophylaxis for 30 years old need to travel to rural area in Ghana?</p>
+            <div class="options">
+                <label><input type="radio" name="q53" value="Chloroquine"> Chloroquine</label>
+                <label><input type="radio" name="q53" value="Primaquine"> Primaquine</label>
+                <label><input type="radio" name="q53" value="Mefloquine"> Mefloquine</label>
+                <label><input type="radio" name="q53" value="No prophylaxis"> No prophylaxis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-54">
+            <p>54- A 7-year-old child, unvaccinated because of his parents’ religious beliefs, develops malaise, cough, coryza, and conjunctivitis with a high fever. Examination of his mouth reveals blue white spots on a red base beside his second molars. The next day he develops an erythematous, nonpruritic, maculopapular rash at his hairline and behind his ears, which spreads over his body. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q54" value="hand-foot-and-mouth disease (coxsackievirus)"> hand-foot-and-mouth disease (coxsackievirus)</label>
+                <label><input type="radio" name="q54" value="measles (rubeola)"> measles (rubeola)</label>
+                <label><input type="radio" name="q54" value="rubella (German measles)"> rubella (German measles)</label>
+                <label><input type="radio" name="q54" value="mumps"> mumps</label>
+                <label><input type="radio" name="q54" value="pertussis"> pertussis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-55">
+            <p>55- A male child from a travelling community is diagnosed with measles. Which one of the following complications is he at risk from in the immediate aftermath of the initial infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q55" value="Arthritis"> Arthritis</label>
+                <label><input type="radio" name="q55" value="Pancreatitis"> Pancreatitis</label>
+                <label><input type="radio" name="q55" value="Infertility"> Infertility</label>
+                <label><input type="radio" name="q55" value="Subacute sclerosing panencephalitis"> Subacute sclerosing panencephalitis</label>
+                <label><input type="radio" name="q55" value="Pneumonia"> Pneumonia</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-56">
+            <p>56- A 23-year-old woman visits your office because of headache, malaise, anorexia, pain in both sides of her jaw, and discomfort in both lower abdominal quadrants. Physical examination reveals enlarged parotid glands; bilateral lower quadrant abdominal tenderness; a temperature of 38.7°C; and a pulse rate of 92/min. Serologic testing (IgM) confirms the diagnosis of mumps. Which of the following is the most appropriate treatment for this condition?</p>
+            <div class="options">
+                <label><input type="radio" name="q56" value="symptomatic"> symptomatic</label>
+                <label><input type="radio" name="q56" value="immunisation"> immunisation</label>
+                <label><input type="radio" name="q56" value="broad-spectrum antibiotics"> broad-spectrum antibiotics</label>
+                <label><input type="radio" name="q56" value="sulfonamides"> sulfonamides</label>
+                <label><input type="radio" name="q56" value="steroids"> steroids</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-57">
+            <p>57- A 21-year-old man presents with symptoms of headache, fever, chills, and discomfort in both sides of his jaw. He has also noticed discomfort in his testes, but no dysuria or urethral discharge. Physical examination reveals bilateral enlargement of the parotid glands, as well as bilateral testicular enlargement and tenderness on palpation. His temperature is 38.5°C pulse rate of 92/min, and the remaining examination is normal. Laboratory data show hemoglobin 15 g/dL; hematocrit 40%; WBC 12000/mL, with 30% segmented neutrophils, 8% monocytes, and 62% lymphocytes. Which of the following statements concerning this disease is true?</p>
+            <div class="options">
+                <label><input type="radio" name="q57" value="the disease is caused by a herpesvirus"> the disease is caused by a herpesvirus</label>
+                <label><input type="radio" name="q57" value="the incubation period is 3–5 days"> the incubation period is 3–5 days</label>
+                <label><input type="radio" name="q57" value="the most common complication of this disease in postpubertal boys and men is orchitis"> the most common complication of this disease in postpubertal boys and men is orchitis</label>
+                <label><input type="radio" name="q57" value="recurrent infections may occur"> recurrent infections may occur</label>
+                <label><input type="radio" name="q57" value="an increased serum amylase is proof of the existence of pancreatitis as a complication"> an increased serum amylase is proof of the existence of pancreatitis as a complication</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-58">
+            <p>58- An 18-year-old woman presents with headache, anorexia, chilly sensations, and discomfort on both sides of her jaw. She has also noticed discomfort in both lower abdominal quadrants. Physical examination reveals bilateral enlarged parotid glands that are doughy, elastic, and slightly tender; with a reddened orifice of Stensen’s duct. Her abdomen is soft with bilateral lower quadrant abdominal tenderness; a temperature of 38.5°C; and a pulse rate of 92/min. Laboratory data show hemoglobin 13 g/dL; hematocrit 40%; white blood cells (WBC) 9000/mL, with 35% segmented neutrophils, 7% monocytes, and 58% lymphocytes. Which of the following is the most likely cause for her abdominal pain and tenderness?</p>
+            <div class="options">
+                <label><input type="radio" name="q58" value="mesenteric lymphadenitis"> mesenteric lymphadenitis</label>
+                <label><input type="radio" name="q58" value="oophoritis"> oophoritis</label>
+                <label><input type="radio" name="q58" value="gonorrhoea"> gonorrhoea</label>
+                <label><input type="radio" name="q58" value="peritoneal metastases"> peritoneal metastases</label>
+                <label><input type="radio" name="q58" value="intestinal hyperperistalsis"> intestinal hyperperistalsis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-59">
+            <p>59- A previously well 28-year-old female has developed gradual onset of fever and malaise over 2–3 weeks. She also complains of arthralgias and myalgias. Repeated measurement of her temperature reveals a low grade fever between 38°C and 39°C. Physical examination reveals an oval retinal haemorrhage with a clear, pale center; a pansystolic cardiac murmur heard best at the apex; and small, tender nodules on her fingertips. Which of the following is the most likely causative organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q59" value="Staphylococcus aureus"> Staphylococcus aureus</label>
+                <label><input type="radio" name="q59" value="S. epidermidis"> S. epidermidis</label>
+                <label><input type="radio" name="q59" value="Viridans streptococci"> Viridans streptococci</label>
+                <label><input type="radio" name="q59" value="enterococcus"> enterococcus</label>
+                <label><input type="radio" name="q59" value="Candida"> Candida</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-60">
+            <p>60- A 27-year-old man presents with symptoms of fever, chills, malaise, and joint discomfort in his hands and knees. He looks unwell, his temperature is 39.4°C, blood pressure 115/70 mmHg, pulse 110/min, head and neck is normal, and his jugular venous pressure (JVP) has a prominent c-v wave. There is also a 3/6 pansystolic murmur heard at the right sternal border that increases with respiration. His lungs are clear, abdomen is soft, and hand joints are normal. He has multiple puncture sites on his forearms from injection drug use. Which of the following is the most likely causative organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q60" value="Staphylococcus aureus"> Staphylococcus aureus</label>
+                <label><input type="radio" name="q60" value="Staphylococcus epidermidis"> Staphylococcus epidermidis</label>
+                <label><input type="radio" name="q60" value="Streptococcus viridans"> Streptococcus viridans</label>
+                <label><input type="radio" name="q60" value="enterococci"> enterococci</label>
+                <label><input type="radio" name="q60" value="Candida"> Candida</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-61">
+            <p>61- A 60-year-old man presents with fever and malaise 6 weeks after mitral valve replacement. On examination, his temperature is 38°C, blood pressure 130/80 mm Hg, pulse 80/min, and a loud pansystolic murmur at the apex, which radiates to the axilla. He has no skin or neurologic findings. Which of the following is the most likely causative organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q61" value="Staphylococcus aureus"> Staphylococcus aureus</label>
+                <label><input type="radio" name="q61" value="a fungus"> a fungus</label>
+                <label><input type="radio" name="q61" value="Staphylococcus saprophyticus"> Staphylococcus saprophyticus</label>
+                <label><input type="radio" name="q61" value="pneumococcus"> pneumococcus</label>
+                <label><input type="radio" name="q61" value="Staphylococcus epidermidis"> Staphylococcus epidermidis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-62">
+            <p>62- Causative organism of infective endocarditis associated with rectal bleeding due to colorectal cancer is ...</p>
+            <div class="options">
+                <label><input type="radio" name="q62" value="Strept. Bovis"> Strept. Bovis</label>
+                <label><input type="radio" name="q62" value="Strept. Viridans"> Strept. Viridans</label>
+                <label><input type="radio" name="q62" value="Staph. Aureus"> Staph. Aureus</label>
+                <label><input type="radio" name="q62" value="Staph. Epidermidis"> Staph. Epidermidis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-63">
+            <p>63- 45 years old woman was diagnosed with bacterial endocarditis. What is the characteristic fundoscopic feature of this disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q63" value="Cherry red macules"> Cherry red macules</label>
+                <label><input type="radio" name="q63" value="Janeway lesions"> Janeway lesions</label>
+                <label><input type="radio" name="q63" value="Macular star"> Macular star</label>
+                <label><input type="radio" name="q63" value="Retinal artery aneurysm"> Retinal artery aneurysm</label>
+                <label><input type="radio" name="q63" value="Roth spots"> Roth spots</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-64">
+            <p>64- A 65-year-old woman presents with fever of 38.5°C for 2 weeks. On examination; BP 140/60 mmHg, pulse 110/min, RR 20/min, and there is a grade 3 systolic murmur heard over cardiac apex echocardiography confirmed the presence of vegetations on mitral valve leaflets. Appropriate antibiotic therapy started. Which of the following is the most useful in order to monitor her response to antibiotics?</p>
+            <div class="options">
+                <label><input type="radio" name="q64" value="Serial blood cultures"> Serial blood cultures</label>
+                <label><input type="radio" name="q64" value="Serial full blood count, monitoring the white cell count"> Serial full blood count, monitoring the white cell count</label>
+                <label><input type="radio" name="q64" value="Serial transthoracic echocardiography"> Serial transthoracic echocardiography</label>
+                <label><input type="radio" name="q64" value="Serum bactericidal activity"> Serum bactericidal activity</label>
+                <label><input type="radio" name="q64" value="Serum C-reactive protein concentration"> Serum C-reactive protein concentration</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-65">
+            <p>65- A 32-year-old man, previously well, develops a fever and dry cough. On examination, his chest is clear and heart sounds are normal. A chest x-ray (CXR) reveals a diffuse interstitial infiltrate. Which of the following is the most likely causative organism?</p>
+            <div class="options">
+                <label><input type="radio" name="q65" value="bacterium"> bacterium</label>
+                <label><input type="radio" name="q65" value="mycoplasma"> mycoplasma</label>
+                <label><input type="radio" name="q65" value="fungus"> fungus</label>
+                <label><input type="radio" name="q65" value="rickettsia"> rickettsia</label>
+                <label><input type="radio" name="q65" value="spirochete"> spirochete</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-66">
+            <p>66- A 73 year old patient develops Staphylococcus aureus bacteraemia with a meticillin-sensitive strain that remains persistent despite flucloxacillin therapy. All prosthetic material and collections of infection have been removed or drained. Which intervention may enhance the success of the therapy?</p>
+            <div class="options">
+                <label><input type="radio" name="q66" value="Administering therapy as IV infusion"> Administering therapy as IV infusion</label>
+                <label><input type="radio" name="q66" value="High-dose once-a-day therapy"> High-dose once-a-day therapy</label>
+                <label><input type="radio" name="q66" value="Increasing the dose frequency"> Increasing the dose frequency</label>
+                <label><input type="radio" name="q66" value="Prolonging treatment duration"> Prolonging treatment duration</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-67">
+            <p>67- Commonest microorganism responsible for acute epiglottitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q67" value="E. coli"> E. coli</label>
+                <label><input type="radio" name="q67" value="Klebsiella pneumonia"> Klebsiella pneumonia</label>
+                <label><input type="radio" name="q67" value="haemophilus influenza"> haemophilus influenza</label>
+                <label><input type="radio" name="q67" value="staphylococcus aureus"> staphylococcus aureus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-68">
+            <p>68- An 18-year old student presented with profuse watery diarrhea. Initially he did not have any nausea, vomiting or stomach cramps, but these developed within a day. He described the diarrhea as looking like cloudy watery but without any blood or mucus. He was opening his bowels over 20 times per day. On examination he looked pale; he was afebrile. Skin turgor was reduced and mucous membranes were dry. Stool culture revealed a growth of Vibrio cholerae. Which is the most appropriate antibiotic to administer?</p>
+            <div class="options">
+                <label><input type="radio" name="q68" value="Ceftriaxone"> Ceftriaxone</label>
+                <label><input type="radio" name="q68" value="Doxycycline"> Doxycycline</label>
+                <label><input type="radio" name="q68" value="Meropenem"> Meropenem</label>
+                <label><input type="radio" name="q68" value="Metronidazole"> Metronidazole</label>
+                <label><input type="radio" name="q68" value="Piperacillin plus gentamicin"> Piperacillin plus gentamicin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-69">
+            <p>69- A 25-year-old woman presented with a history of confusion and fever that had worsened gradually over the preceding four days. On examination she was drowsy and had mild neck stiffness. Neurological examination revealed an extensor left plantar response. A CT scan of her brain showed petechial haemorrhage and area of low attenuation in the right temporo-parietal region. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q69" value="Cerebral toxoplasmosis"> Cerebral toxoplasmosis</label>
+                <label><input type="radio" name="q69" value="Herpes simplex encephalitis"> Herpes simplex encephalitis</label>
+                <label><input type="radio" name="q69" value="Listeria meningoencephalitis"> Listeria meningoencephalitis</label>
+                <label><input type="radio" name="q69" value="Pneumococcal meningitis"> Pneumococcal meningitis</label>
+                <label><input type="radio" name="q69" value="Pyogenic brain abscess"> Pyogenic brain abscess</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-70">
+            <p>70- A 21-year-old man with non-Hodgkins lymphoma and hemolytic anaemia is assessed for splenectomy; Pneumovax Vaccine was considered. When should vaccine be administered?</p>
+            <div class="options">
+                <label><input type="radio" name="q70" value="One month after surgery"> One month after surgery</label>
+                <label><input type="radio" name="q70" value="One month before surgery"> One month before surgery</label>
+                <label><input type="radio" name="q70" value="One week after surgery"> One week after surgery</label>
+                <label><input type="radio" name="q70" value="One week before surgery"> One week before surgery</label>
+                <label><input type="radio" name="q70" value="Perioperatively"> Perioperatively</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-71">
+            <p>71- A 35-year-old man, presented with cellulitis of his right leg. On examination he was mildly confused and febrile 40.1°C with a pulse was 120 /minute and BP 80/55 mmHg. He was treated with intravenous benzylpenicillin and flucloxacillin. Group A Streptococcus was isolated from two sets of blood cultures. There was no significant clinical improvement after 24 hours. What antibiotic should be added?</p>
+            <div class="options">
+                <label><input type="radio" name="q71" value="Ciprofloxacin"> Ciprofloxacin</label>
+                <label><input type="radio" name="q71" value="Clindamycin"> Clindamycin</label>
+                <label><input type="radio" name="q71" value="Gentamicin"> Gentamicin</label>
+                <label><input type="radio" name="q71" value="Rifampicin"> Rifampicin</label>
+                <label><input type="radio" name="q71" value="Vancomycin"> Vancomycin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-72">
+            <p>72- All of the following may be associated with diarrhoea EXCEPT ..</p>
+            <div class="options">
+                <label><input type="radio" name="q72" value="amitriptyline"> amitriptyline</label>
+                <label><input type="radio" name="q72" value="colchicine"> colchicine</label>
+                <label><input type="radio" name="q72" value="sorbitol"> sorbitol</label>
+                <label><input type="radio" name="q72" value="Amoxicillin"> Amoxicillin</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 71;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "Streptococcus pneumoniae",
+            q2: "Booster dose of Hib and MenC vaccine + annual influenza vaccination + lifelong penicillin V",
+            q3: "Meningococcus",
+            q4: "Rabies",
+            q5: "Yellow fever",
+            q6: "Oral poliomyelitis",
+            q7: "Neuroleptic malignant syndrome",
+            q8: "Muscle rigidity",
+            q9: "CK",
+            q10: "Leishmaniasis",
+            q11: "Leishmania braziliensis",
+            q12: "Visceral leishmaniasis",
+            q13: "Diarrhoea",
+            q14: "The presence of Leishman–Donovan bodies confirms the disease",
+            q15: "activation of proteolytic enzymes called caspases",
+            q16: "C3b",
+            q17: "Increased antibody affinity for hapten",
+            q18: "Human herpesvirus 6",
+            q19: "Roseola",
+            q20: "HHV-8",
+            q21: "Human herpes virus type 8",
+            q22: "CMV retinitis",
+            q23: "History will likely provide important clues to the diagnosis",
+            q24: "Silver stain",
+            q25: "Pneumocystis carinii",
+            q26: "Steroids",
+            q27: "Supportive therapy",
+            q28: "Acid-fast staining of stool sample",
+            q29: "Cytomegalovirus colitis",
+            q30: "Cerebral toxoplasmosis",
+            q31: "Pyrimethamine and sulphadiazine",
+            q32: "Thallium SPECT",
+            q33: "Zidovudine",
+            q34: "Didanosine",
+            q35: "Indinavir",
+            q36: "integrase inhibitor",
+            q37: "Start antitretroviral thearpy now",
+            q38: "Start antiretroviral therapy immediately",
+            q39: "Encourage breast feeding",
+            q40: "Oral antiretroviral therapy for 4 weeks",
+            q41: "0.3%",
+            q42: "p24 antigen test",
+            q43: "Toxoplasma gondii",
+            q44: "Rubella",
+            q45: "Malaria",
+            q46: "Thick and thin blood films",
+            q47: "Blood film for malaria parasites",
+            q48: "Repeat blood smear every 8 hours for 3 days",
+            q49: "Respiratory rate 30 per minute",
+            q50: "Quinine",
+            q51: "Quinine",
+            q52: "Atovaquone plus proguanil",
+            q53: "Mefloquine",
+            q54: "measles (rubeola)",
+            q55: "Pneumonia",
+            q56: "symptomatic",
+            q57: "the most common complication of this disease in postpubertal boys and men is orchitis",
+            q58: "oophoritis",
+            q59: "Viridans streptococci",
+            q60: "Staphylococcus aureus",
+            q61: "Staphylococcus epidermidis",
+            q62: "Strept. Bovis",
+            q63: "Roth spots",
+            q64: "Serum C-reactive protein concentration",
+            q65: "mycoplasma",
+            q66: "Administering therapy as IV infusion",
+            q67: "haemophilus influenza",
+            q68: "Doxycycline",
+            q69: "Herpes simplex encephalitis",
+            q70: "One month before surgery",
+            q71: "Clindamycin",
+            q72: "amitriptyline"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
